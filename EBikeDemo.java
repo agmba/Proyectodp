@@ -28,7 +28,7 @@ public class EBikeDemo
     private EBCompany company;
     
     /** * The simulation's bikes; they are the electric bikes of the company. 
-     * @see ElectricBike calvo con pitilin
+     * @see ElectricBike 
      */
     private List<ElectricBike> bikes; 
     
