@@ -9,9 +9,12 @@ import java.util.stream.Collectors;
  * @author DP classes 
  * @version 2026.10.13
  */
+
 public class BikeStation
 {
-    //TODO: Complete this code
+    private String idStation;
+    private Location location;
+    private Dock docks;
 
     /**
      * Constructor for objects of class BikeStation.
@@ -28,7 +31,7 @@ public class BikeStation
      */
     public BikeStation(String id, Location location)
     {
-        //TODO: Complete this code
+    
     }
     
     /**
@@ -47,8 +50,7 @@ public class BikeStation
      */
     public String getId()
     {
-        //TODO: Complete this code   
-        return null;
+        return idStation;
     }
     
     
@@ -68,7 +70,7 @@ public class BikeStation
      */
     public void setLocation(Location location)
     {
-       //TODO: Complete this code   
+       //TODO   
     }
 
     //TODO complete the rest of the code
