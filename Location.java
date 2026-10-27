@@ -40,7 +40,7 @@ public class Location
      */
     public Location nextLocation(Location destination)
     {
-         //TODO: Complete this code
+        
         return null;
     }
 
@@ -52,8 +52,25 @@ public class Location
      */
     public int distance(Location destination)
     {
-         //TODO: Complete this code
-        return 0;
+        int x = 0;
+        int y = 0;
+        int distance = 0;
+        Location aux = new Location(x, y);
+        aux.x = this.x - destination.x;
+        aux.y = this.y - destination.y;
+        if (aux.x < 0){
+            aux.x = -aux.x;
+        }
+        if (aux.y < 0){
+            aux.y = -aux.y;
+        }
+        if (aux.x < aux.y){
+            distance = aux.y;
+        }
+        else{
+            distance = aux.x;
+        }
+        return distance;
     }
     
     /**
