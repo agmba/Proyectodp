@@ -29,7 +29,13 @@ public class Dock
         amountCollected = 0;
         free = true;
     }
-
+    
+    /*
+     * 
+     */
+    public int getChargingSpeed(){
+      return chargingSpeed;  
+    }
     
     /**
      * Returns a string representation of the dock, including its ID, speed, fee, and the number of EVs recharged.
