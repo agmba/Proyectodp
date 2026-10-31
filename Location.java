@@ -1,4 +1,4 @@
-import java.util.*;
+    import java.util.*;
 
 /**
  * Model a location in a two-dimensional grid city using (x, y) coordinates.
@@ -40,8 +40,29 @@ public class Location
      */
     public Location nextLocation(Location destination)
     {
+        int siguienteX = this.x;
+        int siguienteY = this.y;
         
-        return null;
+        if(siguienteX != destination.getX()){
+            if(siguienteX < destination.getX()){
+                siguienteX ++;
+            }
+            else{
+                siguienteX --;
+            }
+        }
+        
+        if(siguienteY != destination.getY()){
+            if(siguienteY < destination.getY()){
+                siguienteY ++;
+            }
+            else{
+                siguienteY --;
+            }
+        } 
+        
+        Location siguiente = new Location(siguienteX, siguienteY);
+        return siguiente;
     }
 
     /**
@@ -55,20 +76,19 @@ public class Location
         int x = 0;
         int y = 0;
         int distance = 0;
-        Location aux = new Location(x, y);
-        aux.x = this.x - destination.x;
-        aux.y = this.y - destination.y;
-        if (aux.x < 0){
-            aux.x = -aux.x;
+        x = this.x - destination.getX();
+        y = this.y - destination.getY();
+        if (x < 0){
+            x = -x;
         }
-        if (aux.y < 0){
-            aux.y = -aux.y;
+        if (y < 0){
+            y = -y;
         }
-        if (aux.x < aux.y){
-            distance = aux.y;
+        if (x < y){
+            distance = y;
         }
         else{
-            distance = aux.x;
+            distance = x;
         }
         return distance;
     }
