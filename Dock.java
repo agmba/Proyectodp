@@ -66,7 +66,13 @@ public class Dock
         //TODO: Complete this code
         return 0;
     }
-
+    
+    /**
+     * 
+     */
+    public boolean getFree(){
+        return free;
+    }
     //TODO: Complete this code
 
 }

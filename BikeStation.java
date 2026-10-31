@@ -14,7 +14,7 @@ public class BikeStation
 {
     private String idStation;
     private Location location;
-    private Dock docks;
+    private ArrayList<Dock> docks;
 
     /**
      * Constructor for objects of class BikeStation.
@@ -22,7 +22,9 @@ public class BikeStation
      */
     public BikeStation(  )
     {
-        //TODO: Complete this code
+        idStation = " ";
+        location = null;
+        docks = new ArrayList<>();
     }
 
     /**
@@ -31,7 +33,9 @@ public class BikeStation
      */
     public BikeStation(String id, Location location)
     {
-    
+        idStation = id;
+        this.location = location;
+        docks = new ArrayList<>();
     }
     
     /**
@@ -41,7 +45,7 @@ public class BikeStation
      */
     public Dock getFreeDock()
     {
-       //TODO: Complete this code   
+           
         return null;        
     }
 
