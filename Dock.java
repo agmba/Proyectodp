@@ -61,7 +61,7 @@ public class Dock
      * @return The total number of {@link ElectricBike}s that have been recharged by this dock.
      */
     public int getNumberEVRecharged(){
-        return numberRecharged;
+        return bikesRecharged.size();
     }
     
     
@@ -70,7 +70,7 @@ public class Dock
      * Increases the amount collected and registers the bike as recharged.
      * //TODO complete the JavaDoc comments
      */
-    public float recharge(   ){
+    public float recharge( ElectricBike bike  ){
         //TODO: Complete this code
         return 0;
     }
