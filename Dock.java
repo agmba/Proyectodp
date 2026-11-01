@@ -12,7 +12,7 @@ public class Dock
     private String idDock;
     private int chargingSpeed;
     private float chargingFee;
-    private ElectricBike bikesRecharged;
+    private ArrayList<ElectricBike> bikesRecharged;
     private int amountCollected;
     private boolean free;
 
@@ -25,7 +25,7 @@ public class Dock
         idDock = id;
         chargingSpeed = speed;
         chargingFee = fee;
-        //bikesRecharged = new ElectricBike();
+        bikesRecharged = new ArrayList<>();
         amountCollected = 0;
         free = true;
     }
@@ -33,18 +33,18 @@ public class Dock
     /*
      * 
      */
-    public int getChargingSpeed(){
-      return chargingSpeed;  
+    public string getChargingSpeed(){
+        String speed = chargingSpeed + "wh";
+        return speed;  
     }
     
     /**
      * Returns a string representation of the dock, including its ID, speed, fee, and the number of EVs recharged.
      * @return A string representation of the dock.
      */
-    public String toString()
+    public String ToString()
     {
-        //TODO: Complete this code
-        return null;
+        return idDock + ":" + getChargingSpeed() + ":" + getChargingFee() + ":" + 
     }    
 
     
