@@ -13,6 +13,7 @@ public class Dock
     private int chargingSpeed;
     private float chargingFee;
     private ArrayList<ElectricBike> bikesRecharged;
+    private int numberRecharged;
     private int amountCollected;
     private boolean free;
 
@@ -26,16 +27,24 @@ public class Dock
         chargingSpeed = speed;
         chargingFee = fee;
         bikesRecharged = new ArrayList<>();
+        numberRecharged = 0;
         amountCollected = 0;
         free = true;
     }
     
-    /*
-     * 
+    /**
+     * @return the dock's charging speed in wh. Transforms an int into a string.
      */
-    public string getChargingSpeed(){
+    public String getChargingSpeed(){
         String speed = chargingSpeed + "wh";
         return speed;  
+    }
+    
+    /**
+     * @return the dock's charging speed in €/Wh. Transforms an int into a string.
+     */
+    public String getChargingFee(){
+        return chargingFee + "€ / Wh";
     }
     
     /**
@@ -44,16 +53,15 @@ public class Dock
      */
     public String ToString()
     {
-        return idDock + ":" + getChargingSpeed() + ":" + getChargingFee() + ":" + 
+        return idDock + ":" + getChargingSpeed() + ":" + getChargingFee() + ":" + getNumberEVRecharged();
     }    
 
     
     /**
      * @return The total number of {@link ElectricBike}s that have been recharged by this dock.
      */
-    public int getNumerEVRecharged(){
-       //TODO: Complete this code
-        return 0;
+    public int getNumberEVRecharged(){
+        return numberRecharged;
     }
     
     
@@ -68,7 +76,7 @@ public class Dock
     }
     
     /**
-     * 
+     * Returns true if the dock is free to use or false if it isn't.
      */
     public boolean getFree(){
         return free;
