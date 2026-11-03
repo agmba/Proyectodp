@@ -45,7 +45,11 @@ public class BikeStation
      */
     public Dock getFreeDock()
     {
-           
+        for (int i = 0; i < docks.size(); i++){
+            if(docks.get(i).getFree()){
+                return docks.get(i);
+            }
+        }
         return null;        
     }
 
@@ -64,7 +68,7 @@ public class BikeStation
      */
     public void addDock(Dock dock)
     {
-       //TODO: Complete this code
+       docks.add(dock);
     }
     
     /**
@@ -74,9 +78,20 @@ public class BikeStation
      */
     public void setLocation(Location location)
     {
-       //TODO   
+       this.location = location;  
     }
-
-    //TODO complete the rest of the code
-
+    
+    /**
+     * @return the location of BikeStation
+     */
+    public Location getLocation(){
+        return location;
+    }
+    
+    /**
+     * @return the set of docks that is called docks
+     */
+    public ArrayList<Dock> getdocks(){
+        return docks;
+    }
 }
