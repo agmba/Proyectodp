@@ -56,6 +56,9 @@ public class Dock
         return idDock + ":" + getChargingSpeed() + ":" + getChargingFee() + ":" + getNumberEVRecharged();
     }    
 
+    public void addEVBike(ElectricBike bike){
+        bikesRecharged.add(bike);
+    }
     
     /**
      * @return The total number of {@link ElectricBike}s that have been recharged by this dock.
