@@ -10,7 +10,12 @@ import java.util.ArrayList;
  */
 public class ElectricBike 
 {
-    //TODO: Complete this code
+    private String idBike;
+    private int batteryCapacity;
+    private int batteryCharge;
+    private int wsCharged;
+    private int chargesCount;
+    private int chargesCost;
 
     /**
      * Constructor of class ElectricBike.
@@ -23,7 +28,7 @@ public class ElectricBike
      */
     public ElectricBike(EBCompany company, Location location, Location targetLocation, String id, int batteryCapacity)
     {
-           //TODO: Complete this code
+           chargesCost = 0;
     }
 
     /**
@@ -35,6 +40,14 @@ public class ElectricBike
         return null;    
     }
 
+    public int getBatteryCapacity(){
+        return batteryCapacity;
+    }
+    
+    public int getBatteryLevel(){
+        return batteryCharge;
+    }
+    
     /**
      * Set the current location.
      * @param location Where it is. Must not be null.
@@ -125,7 +138,9 @@ public class ElectricBike
         //TODO: Complete this code 
         return 0;
     }
-
+    
+    
+    
     /**
      * Simulates the recharging process when the bike arrives at a {@code rechargingLocation}.
      * The battery is charged to full capacity, the cost is calculated, and the route is recalculated.
@@ -133,7 +148,8 @@ public class ElectricBike
      */
     public void recharge(   )
     {
-        //TODO: Complete this code 
+        
+        chargesCost += Dock. 
     } 
 
     /**
@@ -151,7 +167,7 @@ public class ElectricBike
      */
     public void incrementChargesCost(   )
     {
-        //TODO: Complete this code 
+        //chargesCost = chargesCost + (Dock.getChargingSpeed())*
     }   
 
     /**

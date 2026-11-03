@@ -14,7 +14,7 @@ public class Dock
     private float chargingFee;
     private ArrayList<ElectricBike> bikesRecharged;
     private int numberRecharged;
-    private int amountCollected;
+    private float amountCollected;
     private boolean free;
 
     /**
@@ -28,12 +28,12 @@ public class Dock
         chargingFee = fee;
         bikesRecharged = new ArrayList<>();
         numberRecharged = 0;
-        amountCollected = 0;
+        amountCollected = 0.0f;
         free = true;
     }
     
     /**
-     * @return the dock's charging speed in wh. Transforms an int into a string.
+     * Returns the dock's charging speed in wh. Transforms an int into a string.
      */
     public String getChargingSpeed(){
         String speed = chargingSpeed + "wh";
@@ -41,7 +41,7 @@ public class Dock
     }
     
     /**
-     * @return the dock's charging speed in €/Wh. Transforms an int into a string.
+     * Returns the dock's charging speed in €/Wh. Transforms an int into a string.
      */
     public String getChargingFee(){
         return chargingFee + "€ / Wh";
@@ -56,8 +56,26 @@ public class Dock
         return idDock + ":" + getChargingSpeed() + ":" + getChargingFee() + ":" + getNumberEVRecharged();
     }    
 
+    /**
+     * Adds a new Electric bike to the collection of recharged bikes.
+     */
+    
     public void addEVBike(ElectricBike bike){
-        bikesRecharged.add(bike);
+        if (bike != null){
+          bikesRecharged.add(bike);  
+          numberRecharged++;
+        }
+        
+    }
+    
+    public void incAmountCollected(float amount){
+        if (amount > 0){
+            amountCollected += amount;
+        }
+    }
+    
+    public float getAmountCollected(){
+        return amountCollected;
     }
     
     /**
@@ -74,8 +92,17 @@ public class Dock
      * //TODO complete the JavaDoc comments
      */
     public float recharge( ElectricBike bike  ){
-        //TODO: Complete this code
-        return 0;
+        if (bike == null){
+            return 0.0f;
+        }
+        int whNeeded = bike.getBatteryCapacity() - bike.getBatteryLevel();
+        
+        float cost = whNeeded * chargingFee;
+        
+        incAmountCollected(cost);
+        addEVBike(bike);
+        
+        return cost;
     }
     
     /**
