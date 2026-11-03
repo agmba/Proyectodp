@@ -89,7 +89,7 @@ public class Dock
     /**
      * Simulates the charging process for an {@link ElectricBike}.
      * Increases the amount collected and registers the bike as recharged.
-     * //TODO complete the JavaDoc comments
+     * @param 
      */
     public float recharge( ElectricBike bike  ){
         if (bike == null){
@@ -110,6 +110,13 @@ public class Dock
      */
     public boolean getFree(){
         return free;
+    }
+    
+    /**
+     * If a bike has ended up being recharged, it sets the dock free, putting "free" as true.
+     */
+    public void setFree(){
+        free = true;
     }
     //TODO: Complete this code
 

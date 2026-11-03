@@ -11,11 +11,17 @@ import java.util.ArrayList;
 public class ElectricBike 
 {
     private String idBike;
+    private EBCompany company;
+    private Location location;
+    private Location targetLocation;
+    private int idleCount;
     private int batteryCapacity;
-    private int batteryCharge;
+    private int batteryLevel;
     private int wsCharged;
     private int chargesCount;
     private int chargesCost;
+    private ArrayList<Dock> docks;
+    
 
     /**
      * Constructor of class ElectricBike.
@@ -45,7 +51,7 @@ public class ElectricBike
     }
     
     public int getBatteryLevel(){
-        return batteryCharge;
+        return batteryLevel;
     }
     
     /**
@@ -148,8 +154,10 @@ public class ElectricBike
      */
     public void recharge(   )
     {
-        
-        chargesCost += Dock. 
+        BikeStation bikeStation = new BikeStation();
+        bikeStation = company.getBikeStation(location);
+        dock = BikeStation.getFreeDock();
+        chargesCost += dock.recharge(); 
     } 
 
     /**
