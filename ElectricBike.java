@@ -34,7 +34,15 @@ public class ElectricBike
      */
     public ElectricBike(EBCompany company, Location location, Location targetLocation, String id, int batteryCapacity)
     {
-           chargesCost = 0;
+        idBike = id;
+        idleCount = 0;
+        //company = company
+        batteryCapacity = 0;
+        batteryLevel = 0;
+        wsCharged = 0;
+        chargesCount = 0;
+        chargesCost = 0;
+        docks = new ArrayList<>();
     }
 
     /**
