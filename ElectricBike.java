@@ -36,7 +36,10 @@ public class ElectricBike
     {
         idBike = id;
         idleCount = 0;
-        //company = company
+        this.company = company;
+        this.location = location;
+        this.targetLocation = targetLocation;
+        idleCount = 0;
         batteryCapacity = 0;
         batteryLevel = 0;
         wsCharged = 0;
@@ -164,8 +167,12 @@ public class ElectricBike
     {
         BikeStation bikeStation = new BikeStation();
         bikeStation = company.getBikeStation(location);
-        dock = BikeStation.getFreeDock();
-        chargesCost += dock.recharge(); 
+        if (bikeStation != null && bikeStation.getFreeDock() != null){
+            Dock dock = bikeStation.getFreeDock();
+            int whToRecharge = batteryCapacity - batteryLevel;
+            
+            chargesCost += dock.recharge(); 
+        }
     } 
 
     /**
