@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Model the common elements of an Electric bike (EB) that operates 
@@ -155,7 +156,20 @@ public class ElectricBike
      */
     public void calculateRechargingPosition()
     {
-        //TODO: Complete this code
+        rechargingLocation = null;
+        int bestDistance = Integer.MAX_VALUE;
+        Iterator<BikeStation> it = company.getStations().iterator();
+        while (it.hasNext()) {
+            Location stationLocation = it.next().getLocation();
+            boolean reachable = location.distance(stationLocation) * MOVING_COST <= batteryLevel;
+            if (!stationLocation.equals(location) && reachable) {
+                int total = location.distance(stationLocation) + stationLocation.distance(targetLocation);
+                if (total < bestDistance) {
+                    bestDistance = total;
+                    rechargingLocation = stationLocation;
+                }
+            }
+        }
     }
 
     /**
@@ -174,24 +188,20 @@ public class ElectricBike
      * The battery is charged to full capacity, the cost is calculated, and the route is recalculated.
      * //TODO complete the JavaDoc comments
      */
-    public void recharge(   )
+    public void recharge()
     {
-       BikeStation bikeStation = company.getBikeStation(location);
-        if (bikeStation == null) {
-            return;
+        BikeStation bikeStation = company.getBikeStation(location);
+        if (bikeStation != null && bikeStation.getFreeDock() != null) {
+            Dock dock = bikeStation.getFreeDock();
+            int whCharged = batteryCapacity - batteryLevel;
+            incrementChargesCost(dock.recharge(this));
+            docks.add(dock);
+            incrementCharges();
+            wsCharged += whCharged;
+            batteryLevel = batteryCapacity;
+            calculateRoute();
         }
-        Dock dock = bikeStation.getFreeDock();
-        if (dock == null) {
-            return;
-        }
-        int whCharged = batteryCapacity - batteryLevel;
-        chargesCost += dock.recharge(this);
-        docks.add(dock);
-        chargesCount++;
-        wsCharged += whCharged;
-        batteryLevel = batteryCapacity;
-        calculateRoute();
-    } 
+    }
 
     /**
      * Increments the count of recharges performed by this bike.
@@ -227,6 +237,7 @@ public class ElectricBike
      */
     public void reduceBatteryLevel(){
         batteryLevel = batteryLevel - MOVING_COST;
+
     }
 
     /**
