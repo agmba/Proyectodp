@@ -38,7 +38,6 @@ public class ElectricBike
      */
     public ElectricBike(EBCompany company, Location location, Location targetLocation, String id, int batteryCapacity)
     {
-<<<<<<< HEAD
         if (company == null || location == null || targetLocation == null) {
             throw new NullPointerException("company, location and targetLocation must not be null");
         }
@@ -54,19 +53,6 @@ public class ElectricBike
         chargesCount = 0;
         chargesCost = 0.0f;
         arrivalStep = Integer.MAX_VALUE;
-=======
-        idBike = id;
-        idleCount = 0;
-        this.company = company;
-        this.location = location;
-        this.targetLocation = targetLocation;
-        idleCount = 0;
-        batteryCapacity = 0;
-        batteryLevel = 0;
-        wsCharged = 0;
-        chargesCount = 0;
-        chargesCost = 0;
->>>>>>> 0669083ce5571ead08185cba565b0f185f462318
         docks = new ArrayList<>();
     }
 
@@ -226,28 +212,6 @@ public class ElectricBike
     {
         return location.distance(targetLocation);
     }
-<<<<<<< HEAD
-=======
-    
-    
-    
-    /**
-     * Simulates the recharging process when the bike arrives at a {@code rechargingLocation}.
-     * The battery is charged to full capacity, the cost is calculated, and the route is recalculated.
-     * //TODO complete the JavaDoc comments
-     */
-    public void recharge(   )
-    {
-        BikeStation bikeStation = new BikeStation();
-        bikeStation = company.getBikeStation(location);
-        if (bikeStation != null && bikeStation.getFreeDock() != null){
-            Dock dock = bikeStation.getFreeDock();
-            int whToRecharge = batteryCapacity - batteryLevel;
-            
-            chargesCost += dock.recharge(); 
-        }
-    } 
->>>>>>> 0669083ce5571ead08185cba565b0f185f462318
 
     /**
      * Recharges the bike at the station where it is located.
