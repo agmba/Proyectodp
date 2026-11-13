@@ -85,6 +85,12 @@ public class Dock
         return bikesRecharged.size();
     }
     
+    /**
+     * 
+     */
+    public String getIdDock(){
+        return idDock;
+    }
     
     /**
      * Simulates the charging process for an {@link ElectricBike}.
@@ -118,6 +124,6 @@ public class Dock
     public void setFree(){
         free = true;
     }
-    //TODO: Complete this code
+    
 
 }

@@ -9,7 +9,9 @@ import java.util.*;
  */
 public class EBCompany  
 {
-    //TODO: Complete this code
+    private String name;
+    private List<ElectricBike> subscribedBikes;
+    private List<BikeStation> stations;
 
     /**
      * Constructor for objects of class EVCompany.
@@ -17,16 +19,45 @@ public class EBCompany
      */
     public EBCompany(String name)
     {
-        //TODO: Complete this code
+        this.name = name;
+        subscribedBikes = new ArrayList<>();
+        stations = new ArrayList<>();
     }
-
+    
+    /**
+     *  @return The name of the company.
+     */
+    public String getName()
+    {
+        return name;
+    }
+    
+    /**
+     * @return The list of electric bikes subscribed to the company.
+     */
+    public List<ElectricBike> getSubscribedBikes()
+    {
+        return subscribedBikes;
+    }
+    
+    /**
+     * @return The list of bike stations managed by the company.
+     */
+    public List<BikeStation> getStations()
+    {
+        return stations;
+    }
+    
     /**
      * Adds an {@link ElectricBike} to the company's fleet.
      * @param bike The electric bike to add.
      */
     public void addElectricBike(ElectricBike bike)
     {       
-        //TODO: Complete this code
+        if (bike == null) {
+            throw new NullPointerException("Bike must not be null");
+        }
+        subscribedBikes.add(bike);
     }
 
     
@@ -47,8 +78,15 @@ public class EBCompany
      */
     public BikeStation getBikeStation(String id)
     {
-        //TODO: Complete this code
-        return null;
+        BikeStation found = null;
+        Iterator<BikeStation> it = stations.iterator();
+        while (it.hasNext() && found == null) {
+            BikeStation station = it.next();
+            if (station.getId().equals(id)) {
+                found = station;
+            }
+        }
+        return found;
     }
 
     /**
