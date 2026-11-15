@@ -63,11 +63,15 @@ public class EBCompany
     
     /**
      * Adds a {@link BikeStation} to the company's network.
-     * @param station The bike station to add.
+     * @param station The bike station to add. Must not be null.
+     * @throws NullPointerException If station is null.
      */
     public void addBikeStation(BikeStation station)
     {       
-        //TODO: Complete this code
+        if (station == null) {
+            throw new NullPointerException("Station must not be null");
+        }
+        stations.add(station);
     }
     
     
@@ -96,8 +100,15 @@ public class EBCompany
      */
     public BikeStation getBikeStation(Location location)
     {
-        //TODO: Complete this code
-        return null;
+          BikeStation found = null;
+        Iterator<BikeStation> it = stations.iterator();
+        while (it.hasNext() && found == null) {
+            BikeStation station = it.next();
+            if (station.getLocation().equals(location)) {
+                found = station;
+            }
+        }
+        return found;
     }
     
     
@@ -105,15 +116,16 @@ public class EBCompany
      * @return The total number of managed {@link BikeStation}s.
      */
     public int getNumberOfStations(){
-        //TODO: Complete this code
-        return 0;
+        return stations.size();
     }
     
     /**
      * Clears all managed bikes and stations, resetting the company to an empty state.
      */
-    public void reset(){
-        //TODO: Complete this code
+    public void reset()
+    {
+        subscribedBikes.clear();
+        stations.clear();
     }
-    
 }
+    
