@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Models an electric bike station.
@@ -76,12 +77,19 @@ public class BikeStation
     }
 
     /**
-     * Adds a new {@link Dock} to the station.
-     * @param dock The new Dock unit.
+     * Adds a new {@link Dock} to the station, keeping the docks ordered by
+     * charging speed (descending), charging fee (ascending) 
+     * and id (ascending).
+     * @param dock The new Dock unit. Must not be null.
+     * @throws NullPointerException If dock is null.
      */
     public void addDock(Dock dock)
     {
+        if (dock == null) {
+            throw new NullPointerException("Dock must not be null");
+        }
         docks.add(dock);
+        Collections.sort(docks, new ComparatorDocks());
     }
 
     /**
