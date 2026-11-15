@@ -4,8 +4,7 @@ import java.util.ArrayList;
 /**
  * Model the common elements of an Electric bike (EB) that operates 
  * within the simulation, moving towards a target and potentially recharging.
- * @author David J. Barnes and Michael Kölling
- * @author DP classes 
+ * @author Álvaro Gómez Martín, Javier Ritoré Durán, Daniel Fernández Martín 
  * @version 2026.10.13
  */
 public class ElectricBike 
@@ -31,10 +30,12 @@ public class ElectricBike
      * Constructor of class ElectricBike.
      * @param company The EB's operating company. Must not be null.
      * @param location The EB's starting {@link Location}. Must not be null.
-     * @param targetLocation The EB's final destination {@link Location}. Must not be null.
+     * @param targetLocation The EB's final destination {@link Location}.
+     * Must not be null.
      * @param id The identificator of the bike.
      * @param batteryCapacity The maximum capacity of the battery.
-     * @throws NullPointerException If company, location, or targetLocation is null.
+     * @throws NullPointerException If company, location, or targetLocation 
+     * is null.
      */
     public ElectricBike(EBCompany company, Location location, Location targetLocation, String id, int batteryCapacity)
     {
@@ -117,7 +118,8 @@ public class ElectricBike
 
     /**
      * Get the temporary recharging location.
-     * @return The {@link Location} of the next {@link BikeStation} to visit, or null if no recharge is planned.
+     * @return The {@link Location} of the next {@link BikeStation} to visit,
+     * or null if no recharge is planned.
      */
     public Location getRechargingLocation()
     {
@@ -125,7 +127,8 @@ public class ElectricBike
     }
 
     /**
-     * @return The step in which the bike reached its target, or Integer.MAX_VALUE if it has not arrived yet.
+     * @return The step in which the bike reached its target,
+     * or Integer.MAX_VALUE if it has not arrived yet.
      */
     public int getArrivalStep()
     {
@@ -133,7 +136,8 @@ public class ElectricBike
     }
 
     /**
-     * @return The list of docks where the bike has recharged, in chronological order.
+     * @return The list of docks where the bike has recharged, 
+     * in chronological order.
      */
     public List<Dock> getDocks()
     {
@@ -142,7 +146,8 @@ public class ElectricBike
 
     /**
      * Calculates the optimal route for the bike. 
-     * If there isn't enough battery to reach the target, it attempts to find an intermediate 
+     * If there isn't enough battery to reach the target, 
+     * it attempts to find an intermediate 
      * {@link BikeStation} and sets it as the {@code rechargingLocation}.
      */
     public void calculateRoute()
@@ -156,7 +161,8 @@ public class ElectricBike
     }
 
     /**
-     * Gets a string representation of the planned route, including the recharging stop if one exists.
+     * Gets a string representation of the planned route,
+     * including the recharging stop if one exists.
      * @return A string showing the route: {@code currentLocation -> [rechargingLocation ->] targetLocation}.
      */
     public String getStringRoute()
@@ -170,9 +176,11 @@ public class ElectricBike
     }
 
     /**
-     * Checks if the current battery level is enough to reach the final target location,
+     * Checks if the current battery level is enough to reach
+     * the final target location,
      * knowing that each step consumes {@link #MOVING_COST} wh.
-     * @return true if the bike can reach its target without recharging, false otherwise.
+     * @return true if the bike can reach its target without recharging, 
+     * false otherwise.
      */
     public boolean enoughBattery()
     {
@@ -180,12 +188,17 @@ public class ElectricBike
     }
 
     /**
-     * Determines the optimal intermediate {@link BikeStation} to visit for recharging
-     * if the bike cannot reach the final target directly. The chosen station is the one,
-     * reachable with the current battery and different from the current location, that
-     * minimizes the distance to the station plus the distance from the station to the target.
+     * Determines the optimal intermediate {@link BikeStation} 
+     * to visit for recharging
+     * if the bike cannot reach the final target directly. 
+     * The chosen station is the one,
+     * reachable with the current battery and different from 
+     * the current location, that
+     * minimizes the distance to the station plus the distance 
+     * from the station to the target.
      * In case of a tie, the first station analysed is kept.
-     * Sets {@code rechargingLocation} to the chosen station's location, or null if none is reachable.
+     * Sets {@code rechargingLocation} to the chosen station's location,
+     * or null if none is reachable.
      */
     public void calculateRechargingPosition()
     {
@@ -205,7 +218,8 @@ public class ElectricBike
     }
 
     /**
-     * Get the Chebyshev distance to the final target location from the current location.
+     * Get the Chebyshev distance to the final target location 
+     * from the current location.
      * @return The distance (number of steps) to the target location.
      */
     public int distanceToTheTargetLocation()
@@ -217,7 +231,8 @@ public class ElectricBike
      * Recharges the bike at the station where it is located.
      * Uses the first free dock, charges the battery to full capacity,
      * updates costs and counters, and recalculates the route.
-     * If there is no station or no free dock at the current location, nothing happens.
+     * If there is no station or no free dock at the current location,
+     * nothing happens.
      */
     public void recharge()
     {
@@ -253,9 +268,12 @@ public class ElectricBike
 
     /**
      * Carries out a single step of the bike's actions.
-     * Moves one step towards the recharging location (if any) or the final target.
-     * If it is already at the target, or it cannot reach where it is going, it stays idle.
-     * When it arrives at the recharging station it recharges, and when it arrives
+     * Moves one step towards the recharging location (if any) 
+     * or the final target.
+     * If it is already at the target, or it cannot reach where it is going,
+     * it stays idle.
+     * When it arrives at the recharging station it recharges,
+     * and when it arrives
      * at the target it registers the arrival step.
      * @param step The current step of the simulation.
      */
@@ -294,7 +312,8 @@ public class ElectricBike
     }
 
     /**
-     * Reduces the battery level by the cost of one movement step ({@link #MOVING_COST}).
+     * Reduces the battery level by the cost of one movement step
+     * ({@link #MOVING_COST}).
      */
     public void reduceBatteryLevel()
     {
@@ -303,7 +322,8 @@ public class ElectricBike
 
     /**
      * Returns a detailed string representation of the electric bike.
-     * @return A string with id, battery capacity and level, charges count, cost, idle count,
+     * @return A string with id, battery capacity and level, charges count,
+     * cost, idle count,
      * current location, recharging location (if any) and target location.
      */
     @Override

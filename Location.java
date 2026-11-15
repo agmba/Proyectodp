@@ -2,8 +2,7 @@
 
 /**
  * Model a location in a two-dimensional grid city using (x, y) coordinates.
- * @author David J. Barnes and Michael Kölling
- * @author DP classes 
+ * @author Álvaro Gómez Martín, Javier Ritoré Durán, Daniel Fernández Martín 
  * @version 2026.10.13
  */
 public class Location
