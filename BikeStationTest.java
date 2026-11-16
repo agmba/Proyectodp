@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
  * Test implementation of the {@link BikeStation} class.
- * @author DP classes
+ * @author Álvaro Gómez Martín, Javier Ritoré Durán, Daniel Fernández Martín
  * @version 2026.11.15
  */
 public class BikeStationTest

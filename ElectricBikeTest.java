@@ -7,7 +7,7 @@ import org.junit.Test;
  * Test implementation of the {@link ElectricBike} class.
  * The fixture reproduces the SIMPLE scenario of the project statement:
  * four stations with four docks each, and the bikes EBCC0 and EBCC1.
- * @author DP classes
+ * @author Álvaro Gómez Martín, Javier Ritoré Durán, Daniel Fernández Martín
  * @version 2026.11.15
  */
 public class ElectricBikeTest

@@ -102,7 +102,7 @@ public class EBCompany
      */
     public BikeStation getBikeStation(Location location)
     {
-          BikeStation found = null;
+        BikeStation found = null;
         Iterator<BikeStation> it = stations.iterator();
         while (it.hasNext() && found == null) {
             BikeStation station = it.next();
