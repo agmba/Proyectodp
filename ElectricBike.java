@@ -145,6 +145,54 @@ public class ElectricBike
     }
 
     /**
+     * @return The company the bike is subscribed to.
+     */
+    public EBCompany getCompany()
+    {
+        return company;
+    }
+
+    /**
+     * @return The current location of the bike.
+     */
+    public Location getLocation()
+    {
+        return location;
+    }
+
+    /**
+     * @return The number of steps the bike has been idle.
+     */
+    public int getIdleCount()
+    {
+        return idleCount;
+    }
+
+    /**
+     * @return The total wh charged in the bike.
+     */
+    public int getWsCharged()
+    {
+        return wsCharged;
+    }
+
+    /**
+     * @return The number of recharges performed by the bike.
+     */
+    public int getChargesCount()
+    {
+        return chargesCount;
+    }
+
+    /**
+     * @return The total cost (€) of the recharges performed by the bike.
+     */
+    public float getChargesCost()
+    {
+        return chargesCost;
+    }
+
+    /**
      * Calculates the optimal route for the bike. 
      * If there isn't enough battery to reach the target, 
      * it attempts to find an intermediate 
