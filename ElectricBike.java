@@ -318,8 +318,9 @@ public class ElectricBike
      * Carries out a single step of the bike's actions.
      * Moves one step towards the recharging location (if any) 
      * or the final target.
-     * If it is already at the target, or it cannot reach where it is going,
-     * it stays idle.
+     * If it is already where it is going (the target, or a recharging
+     * station without free docks), or it cannot reach where it is going,
+     * it stays idle without moving.
      * When it arrives at the recharging station it recharges,
      * and when it arrives
      * at the target it registers the arrival step.
@@ -332,7 +333,7 @@ public class ElectricBike
             destination = targetLocation;
         }
 
-        if (location.equals(targetLocation) || location.distance(destination) * MOVING_COST > batteryLevel) {
+        if (location.equals(destination) || location.distance(destination) * MOVING_COST > batteryLevel) {
             idleCount++;
         }
         else {
